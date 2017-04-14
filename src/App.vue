@@ -56,7 +56,7 @@
 body{
 	margin: 0;
 	background: #e5e5e5;
-	font-size: 14px;
+	font-size: 0.1rem;
 }
 .nav-main{
 	position: absolute;
@@ -84,6 +84,6 @@ body{
 	color: #fff;
 }
 .nav-main>ul>li>a>p{
-	margin: 0.1em 0;
+	margin: 0;
 }
 </style>
