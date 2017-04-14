@@ -6,10 +6,10 @@
 		<div class="search-nav">
 			<ul>
 				<li class="current">
-					<router-link to="/character">个性推荐</router-link>
+					<router-link to="/">个性推荐</router-link>
 				</li>
 				<li>
-					<router-link to="/musicList">歌单</router-link>
+					<router-link to="/">歌单</router-link>
 				</li>
 				<li>
 					<router-link to="/">主播电台</router-link>
