@@ -84,6 +84,6 @@ body{
 	color: #fff;
 }
 .nav-main>ul>li>a>p{
-	margin: 1em 0;
+	margin: 0.3em 0;
 }
 </style>
