@@ -1,7 +1,5 @@
 <template>
 	<mt-header>
-	  <input type="text" name="">
-	  <mt-field label="phone" placeholder="Input tel" type="tel"></mt-field>
 	  <mt-button slot="right"><i class="iconfont">&#xe649;</i></mt-button>
 	</mt-header>
 </template>
