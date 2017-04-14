@@ -55,22 +55,18 @@
 }
 body{
 	margin: 0;
-	background: #e5e5e5;
 	font-size: 0.1rem;
 }
 .nav-main{
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: rgba(49,49,49,0.85);
+	background: rgba(49,49,49,0.75);
 }
 .nav-main>ul{
 	width: 100%;
-	margin: 0;
-	padding: 0;
 }
 .nav-main>ul>li{
-	list-style: none;
 	width: 25%;
 	float: left;
 	text-align: center;
@@ -78,7 +74,6 @@ body{
 }
 .nav-main>ul>li>a{
 	color: #808080;
-	text-decoration: none;
 }
 .nav-main>ul>li.current>a{
 	color: #fff;

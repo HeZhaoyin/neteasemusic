@@ -13,3 +13,14 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
