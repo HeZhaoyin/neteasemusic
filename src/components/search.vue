@@ -19,7 +19,9 @@
 				</li>
 			</ul>
 		</div>
-		<router-view></router-view>
+		<keep-alive>
+			<router-view></router-view>
+		</keep-alive>
 	</div>
 </template>
 
@@ -54,7 +56,7 @@ export default {
 .search-nav>ul>li>a{
 	color: #000;
 	font-size: 0.8rem;
-	line-height: 1.6rem;
+	line-height: 1.7rem;
 	display: inline-block;
 }
 .search-nav>ul>li>a.router-link-active{
