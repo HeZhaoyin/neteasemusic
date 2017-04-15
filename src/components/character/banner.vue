@@ -1,6 +1,6 @@
 <template lang="html">
 	<div class="banner">
-		<ul ref="bannerUl" @touchmove="move" @touchstart="start" :class="{trans:isTrans}">
+		<ul ref="bannerUl" @touchmove="move" @touchstart="start" @touchend="end" :class="{trans:isTrans}">
 			<li><img src="../../assets/banner44.jpg" alt=""></li>
 			<li><img src="../../assets/banner11.jpg" alt=""></li>
 			<li><img src="../../assets/banner22.jpg" alt=""></li>
@@ -27,7 +27,7 @@ export default {
 	},
 	mounted: function () {
 	  this.$nextTick(() => {
-	    this.timer = setInterval(this.autoPlay,1500);
+	    this.timer = setInterval(this.autoPlay,2000);
 		this.$refs.bannerUl.addEventListener('webkitTransitionEnd',() => {
 			if (this.index >= 4) {
 				this.isTrans = false;
@@ -36,7 +36,7 @@ export default {
 			}
 		})
 	  })
-  },
+	},
 	methods:{
 		autoPlay:function(){
 			this.isTrans = true;
@@ -50,8 +50,20 @@ export default {
 			this.startX = e.touches[0].clientX;
 		},
 		move:function(e){
+			clearInterval(this.timer);
+			this.isTrans = false;
 			this.distance = e.touches[0].clientX - this.startX;
-			console.log(this.distance);
+			this.play(-this.index * 20 + this.distance / 375 * 20);
+		},
+		end:function(){
+			if (this.distance > 0) {
+				this.index--;
+			}else{
+				this.index++;
+			}
+			this.isTrans = true;
+			this.play(-this.index * 20);
+			this.timer = setInterval(this.autoPlay,2000);
 		},
 		toggleTransition:function(){
 			this.isTrans = !this.isTrans;
@@ -67,6 +79,7 @@ export default {
 .banner>ul{
 	width: 500%;
 	overflow: hidden;
+	transform: translate(-20%);
 }
 .banner>ul>li{
 	float: left;
