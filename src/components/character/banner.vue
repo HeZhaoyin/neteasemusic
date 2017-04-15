@@ -73,6 +73,7 @@ export default {
 	width: 20%;
 }
 .banner>ul>li>img{
+	display: block;
 	width: 100%;
 }
 .trans{

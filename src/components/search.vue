@@ -46,6 +46,7 @@ export default {
 	width: 100%;
 	overflow: hidden;
 	background-color: #e5e5e5;
+	border-bottom: 1px solid #999;
 }
 .search-nav>ul>li{
 	float: left;
