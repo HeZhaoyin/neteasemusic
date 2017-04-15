@@ -4,7 +4,7 @@
 	<div class="nav-main">
 		<ul>
 			<li class="current">
-				<router-link to="/">
+				<router-link to="/search">
 					<p><i class="iconfont">&#xe601;</i></p>
 					<span>发现音乐</span>
 				</router-link>
@@ -33,11 +33,10 @@
 </template>
 
 <script type="es6">
-  import search from './components/search'
   export default {
     name: 'app',
     components: {
-      search
+
     }
   }
 </script>

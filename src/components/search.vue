@@ -5,17 +5,17 @@
 		</mt-header>
 		<div class="search-nav">
 			<ul>
-				<li class="current">
-					<router-link to="/">个性推荐</router-link>
+				<li>
+					<router-link to="/search/character">个性推荐</router-link>
 				</li>
 				<li>
-					<router-link to="/">歌单</router-link>
+					<router-link to="/search/musicList">歌单</router-link>
 				</li>
 				<li>
-					<router-link to="/">主播电台</router-link>
+					<router-link to="/search/radio">主播电台</router-link>
 				</li>
 				<li>
-					<router-link to="/">排行榜</router-link>
+					<router-link to="/search/ranking">排行榜</router-link>
 				</li>
 			</ul>
 		</div>
@@ -57,9 +57,8 @@ export default {
 	line-height: 1.6rem;
 	display: inline-block;
 }
-.search-nav>ul>li.current>a{
+.search-nav>ul>li>a.router-link-active{
 	color: #c70c0c;
-
 	border-bottom: 3px solid #c70c0c;
 }
 </style>
