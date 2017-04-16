@@ -10,32 +10,28 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-{
-path: '/search',
-component: search,
-redirect:'/search/character',
-children:[
-{
-path:'character',
-component:character
-},
-{
-path:'musicList',
-component:musicList
-},
-{
-path:'radio',
-component:radio
-},
-{
-path:'ranking',
-component:ranking
-}
-]
-},
-{
-path:'',
-redirect:'/search'
-}
+    {
+      path: '/search',
+      component: search,
+      redirect: '/search/character',
+      children: [
+        {
+          path: 'character',
+          component: character
+        }, {
+          path: 'musicList',
+          component: musicList
+        }, {
+          path: 'radio',
+          component: radio
+        }, {
+          path: 'ranking',
+          component: ranking
+        }
+      ]
+    }, {
+      path: '',
+      redirect: '/search'
+    }
   ]
 })
