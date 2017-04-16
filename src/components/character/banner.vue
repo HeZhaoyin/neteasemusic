@@ -64,9 +64,6 @@ export default {
 			this.isTrans = true;
 			this.play(-this.index * 20);
 			this.timer = setInterval(this.autoPlay,2000);
-		},
-		toggleTransition:function(){
-			this.isTrans = !this.isTrans;
 		}
 	}
 }

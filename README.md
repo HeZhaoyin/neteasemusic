@@ -1,3 +1,4 @@
+[预览](https://bunnywithyou.github.io/neteasemusic/dist/)
 # neteasemusic
 
 > netease music
