@@ -13,6 +13,7 @@ export default new Router({
     {
       path: '/search',
       component: search,
+	  redirect:'/search/character',
 	  children:[
 		  {
 			path:'character',
@@ -31,6 +32,10 @@ export default new Router({
 			  component:ranking
 		  }
 	  ]
-    }
+  },
+  {
+	  path:'',
+	  redirect:'/search'
+  }
   ]
 })
