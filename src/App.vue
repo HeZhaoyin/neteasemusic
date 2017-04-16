@@ -10,19 +10,19 @@
 				</router-link>
 			</li>
 			<li>
-				<router-link to="/">
+				<router-link to="/myMusic">
 					<p><i class="iconfont">&#xe655;</i></p>
 					<span>我的音乐</span>
 				</router-link>
 			</li>
 			<li>
-				<router-link to="/">
+				<router-link to="/friends">
 					<p><i class="iconfont">&#xe608;</i></p>
 					<span>朋友</span>
 				</router-link>
 			</li>
 			<li>
-				<router-link to="/">
+				<router-link to="/user">
 					<p><i class="iconfont">&#xe673;</i></p>
 					<span>账号</span>
 				</router-link>
@@ -74,7 +74,7 @@ body{
 .nav-main>ul>li>a{
 	color: #808080;
 }
-.nav-main>ul>li.current>a{
+.nav-main>ul>li>a.router-link-active{
 	color: #fff;
 }
 .nav-main>ul>li>a>p{
