@@ -1,4 +1,6 @@
 [预览](https://bunnywithyou.github.io/neteasemusic/dist/)
+
+手机查看效果更佳
 ![QRcode](https://github.com/BunnyWithYou/neteasemusic/blob/master/dist/QRcode.png)
 
 # neteasemusic
