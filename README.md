@@ -1,4 +1,6 @@
 [预览](https://bunnywithyou.github.io/neteasemusic/dist/)
+![QRcode](https://github.com/BunnyWithYou/neteasemusic/blob/master/dist/QRcode.png)
+
 # neteasemusic
 
 > netease music
