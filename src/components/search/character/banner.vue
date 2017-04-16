@@ -1,6 +1,6 @@
 <template lang="html">
 	<div class="banner">
-		<ul ref="bannerUl" @touchmove="move" @touchstart="start" @touchend="end" :class="{trans:isTrans}">
+		<ul ref="bannerUl" @touchmove.prevent="move" @touchstart.prevent="start" @touchend.prevent="end" :class="{trans:isTrans}">
 			<li><img src="../../../assets/banner44.jpg" alt=""></li>
 			<li><img src="../../../assets/banner11.jpg" alt=""></li>
 			<li><img src="../../../assets/banner22.jpg" alt=""></li>
