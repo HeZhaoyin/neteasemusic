@@ -8,7 +8,10 @@
 			<li><img src="../../../assets/banner44.jpg" alt=""></li>
 			<li><img src="../../../assets/banner11.jpg" alt=""></li>
 		</ul>
-		<ol>
+		<ol ref="bannerOl">
+			<li></li>
+			<li></li>
+			<li></li>
 			<li></li>
 		</ol>
 	</div>
@@ -38,10 +41,21 @@ export default {
 				this.index = 4;
 			}
 			this.play(-this.index * 100);
+			this.setOl();
 		})
 	  })
 	},
 	methods:{
+		setOl:function(){
+			// this.$refs.bannerOl.children.forEach((value,index)=>{
+			// 	this.$refs.bannerOl.children[index].className = '';
+			// });
+			var myLi = this.$refs.bannerOl.children;
+			for (var i = 0; i < myLi.length; i++) {
+				myLi[i].className = '';
+			}
+			this.$refs.bannerOl.children[this.index - 1].className = 'current';
+		},
 		autoPlay:function(){
 			this.isTrans = true;
 			this.index++;
@@ -81,6 +95,7 @@ export default {
 <style scoped>
 .banner{
 	overflow: hidden;
+	position: relative;
 }
 .banner>ul{
 	width: 600%;
@@ -97,5 +112,22 @@ export default {
 }
 .trans{
 	transition: all 0.3s ease;
+}
+.banner>ol{
+	position: absolute;
+	z-index: 999;
+	left: 29%;
+	top: 80%;
+}
+.banner>ol>li{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: rgba(108, 108, 108, 0.7);
+	float: left;
+	margin-left: 10px;
+}
+.banner>ol>li.current{
+	background-color: #fff;
 }
 </style>
