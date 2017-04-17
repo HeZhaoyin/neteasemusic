@@ -15,14 +15,17 @@
 			<p>云音乐热歌榜</p>
 		</div>
 	</div>
+	<myMusicList></myMusicList>
   </div>
 </template>
 
 <script>
 import banner from './banner.vue'
+import myMusicList from './myMusicList.vue'
 export default {
 	components:{
-		banner
+		banner,
+		myMusicList
 	}
 }
 </script>
@@ -33,6 +36,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 1rem;
 }
 .center-nav>div{
 	width: 33.33%;
