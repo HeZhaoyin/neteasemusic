@@ -13,6 +13,11 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+body{
+	margin: 0;
+	font-size: 0.1rem;
+	font-family: 'Microsoft Yahei';
+}
 ul{
 	margin: 0;
 	padding: 0;

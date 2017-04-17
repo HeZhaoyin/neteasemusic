@@ -54,10 +54,6 @@ import searchHeader from './components/header.vue'
 	margin: 0 auto;
 	position: relative;
 }
-body{
-	margin: 0;
-	font-size: 0.1rem;
-}
 .nav-main{
 	position: absolute;
 	bottom: 0;
