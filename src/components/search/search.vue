@@ -1,6 +1,6 @@
 <template>
 <div class="">
-  <searchHeader></searchHeader>
+
   <div class="search-nav">
     <ul>
       <li>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import searchHeader from './header'
 export default {
   name: 'search',
   data() {
@@ -33,7 +32,7 @@ export default {
     }
   },
   components:{
-    searchHeader
+
   }
 }
 </script>

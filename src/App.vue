@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+	<searchHeader></searchHeader>
 	<router-view></router-view>
 	<div class="nav-main">
 		<ul>
@@ -33,10 +34,11 @@
 </template>
 
 <script type="es6">
+import searchHeader from './components/header.vue'
   export default {
     name: 'app',
     components: {
-
+		searchHeader
     }
   }
 </script>

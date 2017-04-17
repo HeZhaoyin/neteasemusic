@@ -118,7 +118,7 @@ export default {
 
 .banner>ol {
   position: absolute;
-  z-index: 999;
+  z-index: 99;
   left: 29%;
   top: 80%;
 }
