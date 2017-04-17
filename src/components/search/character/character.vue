@@ -37,7 +37,7 @@ export default {
 .center-nav>div{
 	width: 33.33%;
 	padding: 0.8rem 0 0.5rem 0;
-	height: 5rem;
+	height: 4.7rem;
 	display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,8 +45,8 @@ export default {
 }
 .center-nav>div>span{
 	display: flex;
-	width: 3.6rem;
-	height: 3.6rem;
+	width: 3.2rem;
+	height: 3.2rem;
 	border: 1px solid #c70c0c;
 	border-radius: 50%;
 	justify-content: center;
@@ -54,7 +54,7 @@ export default {
 }
 .center-nav>div>span>.iconfont{
 	color: #c70c0c;
-	font-size: 2.1rem;
+	font-size: 1.7rem;
 	font-weight: lighter;
 }
 .center-nav>div>p{
