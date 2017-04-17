@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 .header {
-  height: 30px;
+  height: 35px;
   background-color: #c70c0c;
 }
 .fade-enter-active, .fade-leave-active {
@@ -36,7 +36,7 @@ export default {
   transform: translateX(0);
 }
 .fade-enter, .fade-leave-active {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(100vw);
 }
 .go-player{

@@ -26,9 +26,9 @@ export default {
 	z-index: 999;
 }
 .player-header{
-	height: 30px;
+	height: 35px;
 	background-color: rgba(0,0,0,0);
-	border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 .player-header .back{
 	float: left;
