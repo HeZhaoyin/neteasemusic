@@ -36,8 +36,8 @@ export default {
 }
 .center-nav>div{
 	width: 33.33%;
-	padding: 1rem 0 0.5rem 0;
-	height: 6rem;
+	padding: 0.8rem 0 0.5rem 0;
+	height: 5rem;
 	display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,8 +45,8 @@ export default {
 }
 .center-nav>div>span{
 	display: flex;
-	width: 4rem;
-	height: 4rem;
+	width: 3.6rem;
+	height: 3.6rem;
 	border: 1px solid #c70c0c;
 	border-radius: 50%;
 	justify-content: center;
