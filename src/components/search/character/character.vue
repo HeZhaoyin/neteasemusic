@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
   	<banner></banner>
+	
   </div>
 </template>
 
