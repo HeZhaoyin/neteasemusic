@@ -7,38 +7,47 @@
 		<div class="list">
 			<ul>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
 				<li>
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
 					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
 					<p>那人那景都将在遗忘中重新拾起</p>
 				</li>
@@ -100,17 +109,21 @@ export default {
 }
 .list>ul>li{
 	width: 32%;
+	position: relative;
 }
-/*.list>ul>li:nth-of-type(3n+1){
-	float: left;
-}
-.list>ul>li:nth-of-type(3n){
-	float: right;
-}*/
 .list>ul>li>img{
 	width: 100%;
 }
 .list>ul>li>p{
 	margin: 0;
+}
+.list>ul>li>.count-listen{
+	position: absolute;
+	right: 0;
+	color: #fff;
+	font-size: 0.8rem;
+}
+.list>ul>li>.count-listen>.iconfont{
+	font-size: 0.5rem;
 }
 </style>

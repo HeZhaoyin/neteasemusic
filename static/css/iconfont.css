@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1491887011154'); /* IE9*/
-  src: url('iconfont.eot?t=1491887011154#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1491887011154') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1491887011154') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1491887011154#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1492443772279'); /* IE9*/
+  src: url('iconfont.eot?t=1492443772279#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1492443772279') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1492443772279') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1492443772279#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -34,6 +34,8 @@
 .icon-zanting:before { content: "\e682"; }
 
 .icon-momentmessage:before { content: "\e613"; }
+
+.icon-erjiline:before { content: "\e6b0"; }
 
 .icon-xiazai:before { content: "\e63b"; }
 
