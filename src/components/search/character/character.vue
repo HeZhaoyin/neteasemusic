@@ -34,6 +34,7 @@ export default {
 .chara-main{
 	height: 90vh;
 	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 .center-nav{
 	width: 100%;
