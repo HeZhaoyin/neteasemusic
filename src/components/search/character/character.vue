@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="chara-main">
   	<banner></banner>
 	<div class="center-nav">
 		<div>
@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style scoped>
+.chara-main{
+	height: 90vh;
+	overflow: scroll;
+}
 .center-nav{
 	width: 100%;
 	display: flex;

@@ -4,11 +4,68 @@
 			<span>推荐歌单</span>
 			<span class="flag">></span>
 		</div>
+		<div class="list">
+			<ul>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+				<li>
+					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
+					<p>那人那景都将在遗忘中重新拾起</p>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
+	data(){
+		return{
+			list:[]
+		}
+	}
 }
 </script>
 
@@ -30,5 +87,30 @@ export default {
 	font-weight: 200;
 	position: relative;
 	top: -1px;
+}
+.list{
+	width: 100%;
+}
+.list>ul{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 5px;
+}
+.list>ul>li{
+	width: 32%;
+}
+/*.list>ul>li:nth-of-type(3n+1){
+	float: left;
+}
+.list>ul>li:nth-of-type(3n){
+	float: right;
+}*/
+.list>ul>li>img{
+	width: 100%;
+}
+.list>ul>li>p{
+	margin: 0;
 }
 </style>

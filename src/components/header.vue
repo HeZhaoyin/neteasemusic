@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 .header {
-  height: 35px;
+  height: 5vh;
   background-color: #c70c0c;
 }
 .fade-enter-active, .fade-leave-active {

@@ -1,6 +1,5 @@
 <template>
 <div class="">
-
   <div class="search-nav">
     <ul>
       <li>
@@ -41,6 +40,7 @@ export default {
 <style scoped>
 .search-nav>ul {
   width: 100%;
+  height: 5vh;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #999;

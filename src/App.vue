@@ -55,10 +55,10 @@ import searchHeader from './components/header.vue'
 	position: relative;
 }
 .nav-main{
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
-	background: rgba(49,49,49,0.75);
+	background: rgba(49,49,49,0.97);
 }
 .nav-main>ul{
 	width: 100%;
