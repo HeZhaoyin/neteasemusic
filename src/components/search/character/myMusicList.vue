@@ -6,62 +6,10 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>10万</span>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
-				</li>
-				<li>
-					<img src="http://p1.music.126.net/nBa1JtD-p71DjCcs8rq_zw==/19146895486173414.jpg" alt="">
-					<p>那人那景都将在遗忘中重新拾起</p>
+				<li v-for="item in list">
+					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>{{item.playCount}}</span>
+					<img :src="item.coverImgUrl" alt="">
+					<p>{{item.name}}</p>
 				</li>
 			</ul>
 		</div>
@@ -69,12 +17,26 @@
 </template>
 
 <script>
+import api from '../../../api/api.js'
 export default {
 	data(){
 		return{
 			list:[]
 		}
+	},
+	mounted:function(){
+		this.$nextTick(()=>{
+			this.getList();
+		})
+	},
+	methods:{
+		getList:function(){
+			this.$http.get(api.getMusicListUrl('全部','0','6')).then((res)=>{
+				this.list = res.data.playlists;
+			})
+		}
 	}
+
 }
 </script>
 

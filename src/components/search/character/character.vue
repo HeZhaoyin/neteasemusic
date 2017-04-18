@@ -16,6 +16,7 @@
 		</div>
 	</div>
 	<myMusicList></myMusicList>
+	<div class="footer"></div>
   </div>
 </template>
 
@@ -70,5 +71,8 @@ export default {
 	margin: 0;
 	font-size: 0.8rem;
 	font-weight: 500;
+}
+.footer{
+	height: 10vh
 }
 </style>
