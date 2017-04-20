@@ -6,18 +6,20 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="item in list">
+				<li v-for="item in list" @click="goMenu(item)">
 					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>{{item.playCount}}</span>
 					<img :src="item.coverImgUrl" alt="">
 					<p>{{item.name}}</p>
 				</li>
 			</ul>
 		</div>
+		<musicMenu ref="musicMenu"></musicMenu>
 	</div>
 </template>
 
 <script>
 import api from '../../../api/api.js'
+import musicMenu from '../../musicMenu.vue'
 export default {
 	data(){
 		return{
@@ -34,7 +36,14 @@ export default {
 			this.$http.get(api.getMusicListUrl('全部','0','6')).then((res)=>{
 				this.list = res.data.playlists;
 			})
+		},
+		goMenu:function(item){
+			this.$refs.musicMenu.setData(item)
+			this.$refs.musicMenu.show();
 		}
+	},
+	components:{
+		musicMenu
 	}
 
 }
@@ -78,14 +87,18 @@ export default {
 }
 .list>ul>li>p{
 	margin: 0;
+	padding: 0 5px;
+	font-size: 0.8rem;
 }
 .list>ul>li>.count-listen{
 	position: absolute;
 	right: 0;
 	color: #fff;
 	font-size: 0.8rem;
+	padding: 0 2px;
 }
 .list>ul>li>.count-listen>.iconfont{
 	font-size: 0.5rem;
+	margin-right: 3px;
 }
 </style>

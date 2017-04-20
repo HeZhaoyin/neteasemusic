@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import search from '@/components/search/search'
 import character from '@/components/search/character/character'
-import musicList from '@/components/search/musicList'
+import musicList from '@/components/search/musicList/musicList'
 import radio from '@/components/search/radio/radio'
 import ranking from '@/components/search/ranking/ranking'
 
