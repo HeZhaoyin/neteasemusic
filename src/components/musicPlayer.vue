@@ -8,10 +8,9 @@
 
 <script>
 export default {
-	props:['showPlayer'],
 	methods:{
 		changeShowPlayer:function(){
-			this.$emit('changeShowPlayer');
+			this.$store.commit('changeShowPlayer');
 		}
 	}
 }

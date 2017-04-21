@@ -1,18 +1,16 @@
 <template lang="html">
-	<transition name="movein">
-		<div class="music-menu" v-show="showMusicList">
-			<div class="header">
-				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
-				<span class="header-title">歌单</span>
-			</div>
-			<div class="main">
-				<img class="cover" :src="musicList.coverImgUrl + '?param=300y300'" alt="">
-				<p class="title">{{musicList.name}}</p>
-				<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl" alt="">{{musicList.creator.nickname}}</p>
-			</div>
-			<div class="mask-bg" :style="{backgroundImage:'url(' + musicList.coverImgUrl + '?param=300y300)'}"></div>
+	<div class="music-menu">
+		<div class="header">
+			<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
+			<span class="header-title">歌单</span>
 		</div>
-	</transition>
+		<div class="main">
+			<img class="cover" :src="musicList.coverImgUrl + '?param=300y300'" alt="">
+			<p class="title">{{musicList.name}}</p>
+			<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl" alt="">{{musicList.creator.nickname}}</p>
+		</div>
+		<div class="mask-bg" :style="{backgroundImage:'url(' + musicList.coverImgUrl + '?param=300y300)'}"></div>
+	</div>
 </template>
 
 <script>
@@ -23,7 +21,6 @@ export default {
 		}
 	},
 	computed: mapState([
-	  'showMusicList',
 	  'musicList'
   	]),
 	methods:{
@@ -54,14 +51,6 @@ export default {
 	z-index: -1;
 	-webkit-filter: blur(20px) grayscale(0.5);
 	filter: blur(20px) grayscale(0.5);
-}
-.movein-enter-active,.movein-leave-active{
-	transition: all .5s;
-	transform: translateX(0);
-}
-.movein-enter,.movein-leave-active{
-	opacity: 1;
-	transform: translateX(100vw);
 }
 .header{
 	height: 5vh;

@@ -1,9 +1,11 @@
 <template lang="html">
 	<div class="header">
-		<transition name="fade">
-			<musicPlayer @changeShowPlayer="changeShowPlayer" :showPlayer="showPlayer" v-if="showPlayer"></musicPlayer>
+		<transition name="movein">
+			<musicPlayer v-if="showPlayer"></musicPlayer>
 		</transition>
-		<musicMenu ref="musicMenu"></musicMenu>
+		<transition name="movein">
+			<musicMenu v-if="showMusicList"></musicMenu>
+		</transition>
 		<span class="go-player" @click="changeShowPlayer"><i class="iconfont">&#xe649;</i></span>
 	</div>
 </template>
@@ -11,18 +13,22 @@
 <script>
 import musicPlayer from './musicPlayer'
 import musicMenu from './musicMenu.vue'
+import { mapState } from 'vuex'
 export default {
 	data(){
 		return {
-			showPlayer:false,
 		}
 	},
+	computed: mapState([
+	  'showMusicList',
+	  'showPlayer'
+  	]),
 	components:{
 		musicPlayer,musicMenu
 	},
 	methods:{
 		changeShowPlayer:function(){
-			this.showPlayer = !this.showPlayer;
+			this.$store.commit('changeShowPlayer')
 		}
 	}
 }
@@ -33,11 +39,11 @@ export default {
   height: 5vh;
   background-color: #c70c0c;
 }
-.fade-enter-active, .fade-leave-active {
+.movein-enter-active, .movein-leave-active {
   transition: all .5s;
   transform: translateX(0);
 }
-.fade-enter, .fade-leave-active {
+.movein-enter, .movein-leave-active {
   opacity: 1;
   transform: translateX(100vw);
 }
