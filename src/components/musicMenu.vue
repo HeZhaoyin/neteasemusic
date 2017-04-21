@@ -1,46 +1,35 @@
 <template lang="html">
 	<transition name="movein">
-		<div class="music-menu" v-show="showFlag">
-
+		<div class="music-menu" v-show="showMusicList">
 			<div class="header">
 				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
 				<span class="header-title">歌单</span>
 			</div>
 			<div class="main">
-				<img class="cover" :src="coverImgUrl" alt="">
-				<p class="title">{{title}}</p>
-				<p class="creator"><img class="creator-avatar" :src="creatorAvatar" alt="">{{creatorName}}</p>
+				<img class="cover" :src="musicList.coverImgUrl + '?param=300y300'" alt="">
+				<p class="title">{{musicList.name}}</p>
+				<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl" alt="">{{musicList.creator.nickname}}</p>
 			</div>
-			<div class="mask-bg" :style="{backgroundImage:'url(' + coverImgUrl + ')'}"></div>
+			<div class="mask-bg" :style="{backgroundImage:'url(' + musicList.coverImgUrl + '?param=300y300)'}"></div>
 		</div>
 	</transition>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
 	data(){
 		return{
-			showFlag:false,
-			coverImgUrl:'',
-			title:'',
-			creatorAvatar:'',
-			creatorName:''
 		}
 	},
+	computed: mapState([
+	  'showMusicList',
+	  'musicList'
+  	]),
 	methods:{
-		show:function(){
-			this.showFlag = true;
-		},
 		hide:function(){
-			this.showFlag = false;
+			this.$store.commit('changeShowList');
 		},
-		setData:function(item){
-			console.log(item);
-			this.coverImgUrl = item.coverImgUrl;
-			this.title = item.name;
-			this.creatorAvatar = item.creator.avatarUrl;
-			this.creatorName = item.creator.nickname;
-		}
 	}
 }
 </script>
@@ -63,8 +52,8 @@ export default {
 	top: -10%;
 	left: -10%;
 	z-index: -1;
-	-webkit-filter: blur(15px);
-	filter: blur(15px);
+	-webkit-filter: blur(20px) grayscale(0.5);
+	filter: blur(20px) grayscale(0.5);
 }
 .movein-enter-active,.movein-leave-active{
 	transition: all .5s;

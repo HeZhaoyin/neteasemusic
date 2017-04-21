@@ -8,18 +8,17 @@
 			<ul>
 				<li v-for="item in list" @click="goMenu(item)">
 					<span class="count-listen"><i class="iconfont">&#xe6b0;</i>{{item.playCount}}</span>
-					<img :src="item.coverImgUrl" alt="">
+					<img :src="item.coverImgUrl+'?param=300y300'" alt="">
 					<p>{{item.name}}</p>
 				</li>
 			</ul>
 		</div>
-		<musicMenu ref="musicMenu"></musicMenu>
 	</div>
 </template>
 
 <script>
 import api from '../../../api/api.js'
-import musicMenu from '../../musicMenu.vue'
+import { mapState } from 'vuex'
 export default {
 	data(){
 		return{
@@ -38,14 +37,13 @@ export default {
 			})
 		},
 		goMenu:function(item){
-			this.$refs.musicMenu.setData(item)
-			this.$refs.musicMenu.show();
+			this.$store.commit('changeShowList');
+			this.$store.commit('setMusicList',item);
 		}
 	},
 	components:{
-		musicMenu
-	}
 
+	}
 }
 </script>
 

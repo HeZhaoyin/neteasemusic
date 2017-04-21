@@ -3,12 +3,14 @@
 		<transition name="fade">
 			<musicPlayer @changeShowPlayer="changeShowPlayer" :showPlayer="showPlayer" v-if="showPlayer"></musicPlayer>
 		</transition>
+		<musicMenu ref="musicMenu"></musicMenu>
 		<span class="go-player" @click="changeShowPlayer"><i class="iconfont">&#xe649;</i></span>
 	</div>
 </template>
 
 <script>
 import musicPlayer from './musicPlayer'
+import musicMenu from './musicMenu.vue'
 export default {
 	data(){
 		return {
@@ -16,7 +18,7 @@ export default {
 		}
 	},
 	components:{
-		musicPlayer
+		musicPlayer,musicMenu
 	},
 	methods:{
 		changeShowPlayer:function(){

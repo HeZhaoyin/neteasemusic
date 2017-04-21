@@ -5,11 +5,20 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    showMusicList: false,
+    musicList: {}
+  },
+  getters: {
+    showMusicList: state => state.showMusicList
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
+    changeShowList(state) {
+      state.showMusicList = !state.showMusicList;
+    },
+    setMusicList(state,list) {
+		state.musicList = list;
+		console.log(state.musicList);
+	}
   }
 })
+export default store

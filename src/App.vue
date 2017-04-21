@@ -39,7 +39,7 @@ import searchHeader from './components/header.vue'
     name: 'app',
     components: {
 		searchHeader
-    }
+    },
   }
 </script>
 
