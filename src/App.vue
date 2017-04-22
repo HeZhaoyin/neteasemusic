@@ -6,9 +6,9 @@
   <transition name="movein">
     <musicMenu v-if="showMusicList"></musicMenu>
   </transition>
-  <searchHeader v-show="!showMusicList"></searchHeader>
-  <router-view v-show="!showMusicList"></router-view>
-  <div class="nav-main" v-show="!showMusicList">
+  <searchHeader></searchHeader>
+  <router-view></router-view>
+  <div class="nav-main">
     <ul>
       <li class="current">
         <router-link to="/search">
@@ -110,7 +110,7 @@ export default {
 
 .movein-enter,
 .movein-leave-active {
-  opacity: 1;
+  opacity: 0;
   transform: translateX(100vw);
 }
 </style>

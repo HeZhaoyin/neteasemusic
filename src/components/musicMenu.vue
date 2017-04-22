@@ -6,7 +6,7 @@
 				<span class="header-title">歌单</span>
 			</div>
 
-			<div ref="menuWrapper" class="warpper" @click="initScroll">
+			<div ref="menuWrapper" class="warpper">
 				<div>
 				<div class="main" id="mymain">
 					<div class="cover-main">
@@ -95,7 +95,6 @@ export default {
 	z-index: 999;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	/*-webkit-overflow-scrolling: touch;*/
 }
 .music-menu .mask-bg{
 	width: 120%;
@@ -113,6 +112,12 @@ export default {
 	height: 5vh;
 	text-align: center;
 	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 .header>.back{
 	color: #fff;

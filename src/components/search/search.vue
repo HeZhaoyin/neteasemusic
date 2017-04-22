@@ -3,16 +3,16 @@
   <div class="search-nav">
     <ul>
       <li>
-        <router-link to="/search/character">个性推荐</router-link>
+        <router-link to="/search/character">个性推荐<transition name="fadein"><span></span></transition></router-link>
       </li>
       <li>
-        <router-link to="/search/musicList">歌单</router-link>
+        <router-link to="/search/musicList">歌单<transition name="fadein"><span></span></transition></router-link>
       </li>
       <li>
-        <router-link to="/search/radio">主播电台</router-link>
+        <router-link to="/search/radio">主播电台<transition name="fadein"><span></span></transition></router-link>
       </li>
       <li>
-        <router-link to="/search/ranking">排行榜</router-link>
+        <router-link to="/search/ranking">排行榜<transition name="fadein"><span></span></transition></router-link>
       </li>
     </ul>
   </div>
@@ -51,6 +51,7 @@ export default {
   width: 25%;
   text-align: center;
   line-height: 5vh;
+  position: relative;
 }
 
 .search-nav>ul>li>a {
@@ -62,6 +63,30 @@ export default {
 
 .search-nav>ul>li>a.router-link-active {
   color: #c70c0c;
-  border-bottom: 3px solid #c70c0c;
+  /*border-bottom: 3px solid #c70c0c;*/
+}
+.search-nav>ul>li>a>span{
+	display: inline-block;
+    width: 3rem;
+    height: 3px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -1.5rem;
+    background-color: red;
+	transition: all .5s;
+	opacity: 0;
+}
+.search-nav>ul>li>a.router-link-active>span{
+	opacity: 1;
+}
+.fadein-enter-active,
+.fadein-leave-active {
+
+}
+
+.fadein-enter,
+.fadein-leave-active {
+
 }
 </style>
