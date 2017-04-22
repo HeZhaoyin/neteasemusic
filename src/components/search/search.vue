@@ -42,21 +42,21 @@ export default {
   width: 100%;
   height: 5vh;
   overflow: hidden;
-  background-color: #e5e5e5;
-  border-bottom: 1px solid #999;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 .search-nav>ul>li {
   float: left;
   width: 25%;
   text-align: center;
-  line-height: 2rem;
+  line-height: 5vh;
 }
 
 .search-nav>ul>li>a {
   color: #000;
   font-size: 0.8rem;
-  line-height: 1.7rem;
+  line-height: 4.4vh;
   display: inline-block;
 }
 

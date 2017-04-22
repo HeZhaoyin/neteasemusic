@@ -21,7 +21,6 @@ const store = new Vuex.Store({
     },
     setMusicList(state, list) {
       state.musicList = list;
-      console.log(state.musicList);
     }
   }
 })

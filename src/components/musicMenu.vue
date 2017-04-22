@@ -1,24 +1,55 @@
 <template lang="html">
-	<div class="music-menu">
-		<div class="header">
-			<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
-			<span class="header-title">歌单</span>
+
+		<div class="music-menu" id="mymenu">
+			<div class="header">
+				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
+				<span class="header-title">歌单</span>
+			</div>
+
+			<div ref="menuWrapper" class="warpper" @click="initScroll">
+				<div>
+				<div class="main" id="mymain">
+					<div class="cover-main">
+						<img class="cover" :src="musicList.coverImgUrl + '?param=300y300'" alt="">
+						<span class="count-listen"><i class="iconfont">&#xe6b0;</i>{{musicList.playCount}}</span>
+					</div>
+					<p class="title">{{musicList.name}}</p>
+					<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl + '?param=70y70'" alt="">{{musicList.creator.nickname}}</p>
+				</div>
+				<div class="list" id="mylist">
+					<ul>
+						<li v-for="(item,index) in list">
+							<span class="index">{{index+1}}</span>
+							<div class="music-info">
+								<p class="music-name">{{item.name}}</p>
+								<p class="music-author"><span>{{item.ar[0].name}}</span> - <span>{{item.al.name}}</span></p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+
+			<div class="mask-bg" :style="{backgroundImage:'url(' + musicList.coverImgUrl + '?param=300y300)'}"></div>
 		</div>
-		<div class="main">
-			<img class="cover" :src="musicList.coverImgUrl + '?param=300y300'" alt="">
-			<p class="title">{{musicList.name}}</p>
-			<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl" alt="">{{musicList.creator.nickname}}</p>
-		</div>
-		<div class="mask-bg" :style="{backgroundImage:'url(' + musicList.coverImgUrl + '?param=300y300)'}"></div>
-	</div>
+
+
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import api from '../api/api.js'
+import BScroll from 'better-scroll'
 export default {
 	data(){
 		return{
+			list:[]
 		}
+	},
+	mounted:function(){
+		this.$nextTick(()=>{
+			this.getList();
+		})
 	},
 	computed: mapState([
 	  'musicList'
@@ -27,6 +58,29 @@ export default {
 		hide:function(){
 			this.$store.commit('changeShowList');
 		},
+		getList:function(){
+			this.$http.get(api.getMusicDetailList(this.musicList.id)).then((res)=>{
+				this.list = res.data.playlist.tracks;
+				this.$nextTick(()=>{
+					this.initScroll();
+				})
+			})
+		},
+		initScroll:function(){
+			if (!this.menuScroll) {
+				this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+		          probeType: 3,
+				  click:true,
+				  startX: 0,
+				  startY: 0
+		        });
+				this.menuScroll.on('scroll', (pos) => {
+				  console.log(pos.x + '~' + pos.y)
+				})
+			}else{
+				this.menuScroll.refresh();
+			}
+		}
 	}
 }
 </script>
@@ -39,9 +93,11 @@ export default {
 	top: 0;
 	left: 0;
 	z-index: 999;
-	overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	/*-webkit-overflow-scrolling: touch;*/
 }
-.music-menu>.mask-bg{
+.music-menu .mask-bg{
 	width: 120%;
 	height: 120%;
 	position: absolute;
@@ -49,13 +105,14 @@ export default {
 	top: -10%;
 	left: -10%;
 	z-index: -1;
-	-webkit-filter: blur(20px) grayscale(0.5);
-	filter: blur(20px) grayscale(0.5);
+	-webkit-filter: blur(20px);
+	filter: blur(20px);
 }
 .header{
+	width: 100%;
 	height: 5vh;
 	text-align: center;
-	position: relative;
+	position: fixed;
 }
 .header>.back{
 	color: #fff;
@@ -72,17 +129,29 @@ export default {
 }
 .main{
 	width: 100vw;
-	height: 12rem;
-	margin-top: 1rem;
-	padding: 0 1rem;
+	height: 11rem;
+	padding: 7vh 0 1vh 1rem;
 	color: #fff;
 	overflow: hidden;
+	background-color: rgba(0,0,0,0.4);
 }
-.main>.cover{
+.cover-main,.cover-main>.cover{
 	width: 10rem;
 	height: 10rem;
 	float: left;
 	margin-right: 1rem;
+	position: relative;
+}
+.cover-main>.count-listen{
+	position: absolute;
+	right: 0;
+	color: #fff;
+	font-size: 0.8rem;
+	padding: 0.2rem 0.2rem;
+}
+.cover-main>.count-listen>.iconfont{
+	font-size: 0.5rem;
+	margin-right: 3px;
 }
 .main>.title{
 	padding-right: 2rem;
@@ -91,11 +160,40 @@ export default {
 .main>.creator{
 	display: flex;
 	align-items: center;
+	margin-top: 1rem;
 }
 .main>.creator>.creator-avatar{
 	width: 2rem;
 	height: 2rem;
 	border-radius: 50%;
 	margin-right: 0.5rem;
+}
+.list,.list>ul{
+	width: 100%;
+	background-color: #fff;
+}
+.list>ul>li{
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #e4e4e4;
+	display: flex;
+	padding: 0.6rem 0;
+	font-size: 1rem;
+}
+.list>ul>li>.index{
+	float: left;
+	width: 2rem;
+	font-size: 1.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #999;
+}
+.list>ul>li>.music-info>.music-author{
+	font-size: 0.7rem;
+	color: #666;
+}
+.warpper{
+	height: 100vh;
 }
 </style>
