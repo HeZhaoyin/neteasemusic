@@ -1,7 +1,7 @@
 <template lang="html">
 
 		<div class="music-menu" id="mymenu">
-			<div class="header">
+			<div class="header" :style="{'background':'rgba(192,192,192,' + opacity + ')'}">
 				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
 				<span class="header-title">歌单</span>
 			</div>
@@ -43,7 +43,8 @@ import BScroll from 'better-scroll'
 export default {
 	data(){
 		return{
-			list:[]
+			list:[],
+			opacity:0
 		}
 	},
 	mounted:function(){
@@ -77,14 +78,19 @@ export default {
 				  startY: 0
 		        });
 				this.menuScroll.on('scroll', (pos) => {
-				  console.log(pos.x + '~' + pos.y)
+				//   console.log(pos.x + '~' + pos.y)
+					this.opacity = -pos.y / 200;
+					console.log(this.opacity);
 				})
 			}else{
 				this.menuScroll.refresh();
 			}
 		},
 		addToPlayList:function(item){
-			this.$store.commit('addToPlayList',item)
+			this.$store.commit('addToPlayList',item);
+			this.$store.commit('setAudio');
+			this.$store.commit('changeShowPlayer');
+			this.$store.commit('play');
 		}
 	}
 }
@@ -97,7 +103,7 @@ export default {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 999;
+	z-index: 998;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
