@@ -78,9 +78,7 @@ export default {
 				  startY: 0
 		        });
 				this.menuScroll.on('scroll', (pos) => {
-				//   console.log(pos.x + '~' + pos.y)
 					this.opacity = -pos.y / 200;
-					console.log(this.opacity);
 				})
 			}else{
 				this.menuScroll.refresh();
@@ -88,9 +86,8 @@ export default {
 		},
 		addToPlayList:function(item){
 			this.$store.commit('addToPlayList',item);
-			this.$store.commit('setAudio');
 			this.$store.commit('changeShowPlayer');
-			this.$store.commit('play');
+			this.$store.dispatch('getSong',item.id);
 		}
 	}
 }

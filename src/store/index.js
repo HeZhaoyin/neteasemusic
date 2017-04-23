@@ -40,10 +40,6 @@ const store = new Vuex.Store({
     },
 	setAudio(state) {
 		state.audio = state.playList[state.playCurrentIndex];
-		Axios.get(api.getSong(state.audio.id)).then((res)=>{
-			console.log(res);
-			state.audio.musicSrc = res.data.data[0].url;
-		})
 	},
     addToPlayList(state, item) {
 		var song = {
@@ -63,7 +59,31 @@ const store = new Vuex.Store({
 			state.playList.push(song);
 			state.playCurrentIndex = state.playList.length - 1;
 		}
+	},
+	prev(state){
+		state.playCurrentIndex--;
+		if (state.playCurrentIndex < 0) {
+			state.playCurrentIndex = state.playList.length - 1;
+		}
+		console.log(state.playCurrentIndex);
+		console.log(state.playList);
+		state.audio = state.playList[state.playCurrentIndex];
+	},
+	next(state){
+		state.playCurrentIndex++;
+		if (state.playCurrentIndex > state.playList.length - 1) {
+			state.playCurrentIndex = 0;
+		}
+		state.audio = state.playList[state.playCurrentIndex];
 	}
-  }
+},
+actions:{
+	getSong({commit,state},id){
+		Axios.get(api.getSong(id)).then((res)=>{
+			commit('setAudio');
+			state.audio.musicSrc = res.data.data[0].url;
+		})
+	}
+}
 })
 export default store

@@ -13,15 +13,15 @@
 	</div>
 	<div class="cd">
 		<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
-		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc" alt="">
+		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc + '?param=300y300'" alt="">
 	</div>
-	<audio control="true" ref="player" :src="audio.musicSrc"></audio>
+	<audio @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
 	<div class="control">
 		<span><i class="iconfont">&#xe6bf;</i></span>
-		<span><i class="iconfont">&#xe6c9;</i></span>
+		<span @click="prev"><i class="iconfont">&#xe6c9;</i></span>
 		<span @click="pause" class="control-main" v-if="isPlaying"><i class="iconfont">&#xe682;</i></span>
 		<span @click="play" class="control-main control-play" v-else><i class="iconfont">&#xe628;</i></span>
-		<span><i class="iconfont">&#xe6c8;</i></span>
+		<span @click="next"><i class="iconfont">&#xe6c8;</i></span>
 		<span><i class="iconfont">&#xe659;</i></span>
 	</div>
 </div>
@@ -40,13 +40,22 @@ export default {
 			this.$store.commit('changeShowPlayer');
 		},
 		play:function(){
-			this.$store.commit('setAudio');
 			this.$store.commit('play');
 			this.$refs.player.play();
 		},
 		pause:function(){
 			this.$store.commit('pause');
 			this.$refs.player.pause();
+		},
+		canPlay:function(){
+			this.$store.commit('play');
+			this.$refs.player.play();
+		},
+		prev:function(){
+			this.$store.commit('prev');
+		},
+		next:function(){
+			this.$store.commit('next');
 		}
 	},
 	computed: mapState([

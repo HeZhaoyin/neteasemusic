@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .chara-main{
-	height: 90vh;
+	height: 89vh;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
 }
