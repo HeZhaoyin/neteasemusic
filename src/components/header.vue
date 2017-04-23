@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .header {
-  height: 5vh;
+  height: 6vh;
   background-color: #c70c0c;
   display: flex;
   justify-content: space-between;

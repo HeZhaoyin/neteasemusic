@@ -10,19 +10,19 @@
 	</div>
 	<div class="main">
 		<img :class="{'stick-no-play':isPlaying}" class="stick" src="../../static/img/stick.png" alt="">
-		<div class="cd">
-			<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
-			<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc" alt="">
-		</div>
-		<audio control="true" ref="player" :src="audio.musicSrc"></audio>
-		<div class="control">
-			<span><i class="iconfont">&#xe6bf;</i></span>
-			<span><i class="iconfont">&#xe6c9;</i></span>
-			<span @click="pause" class="control-main" v-if="isPlaying"><i class="iconfont">&#xe682;</i></span>
-			<span @click="play" class="control-main control-play" v-else><i class="iconfont">&#xe628;</i></span>
-			<span><i class="iconfont">&#xe6c8;</i></span>
-			<span><i class="iconfont">&#xe659;</i></span>
-		</div>
+	</div>
+	<div class="cd">
+		<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
+		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc" alt="">
+	</div>
+	<audio control="true" ref="player" :src="audio.musicSrc"></audio>
+	<div class="control">
+		<span><i class="iconfont">&#xe6bf;</i></span>
+		<span><i class="iconfont">&#xe6c9;</i></span>
+		<span @click="pause" class="control-main" v-if="isPlaying"><i class="iconfont">&#xe682;</i></span>
+		<span @click="play" class="control-main control-play" v-else><i class="iconfont">&#xe628;</i></span>
+		<span><i class="iconfont">&#xe6c8;</i></span>
+		<span><i class="iconfont">&#xe659;</i></span>
 	</div>
 </div>
 </template>
@@ -70,7 +70,7 @@ export default {
 	color: #fff;
 }
 .player-header{
-	height: 5vh;
+	height: 6vh;
 	background-color: rgba(0,0,0,0);
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 	display: flex;
@@ -93,14 +93,14 @@ export default {
 .player-header>.title>.music-name{
 	font-size: 1rem;
 }
+.player-header>.title>.music-author{
+	font-size: 0.9rem;
+}
 .main{
-	width: 100%;
+	width: 100vw;
 	height: 80vh;
-	text-align: center;
 	overflow: hidden;
 	position: relative;
-	display: flex;
-	justify-content: center;
 }
 .main>.stick{
 	width: 8rem;
@@ -114,40 +114,47 @@ export default {
 	transform: rotateZ(-25deg);
 }
 .main>.stick-no-play{
-	transform: rotateZ(0deg);
+	transform: rotateZ(-4deg);
 }
-.main>.cd{
-	width: 100%;
+.cd{
+	width: 100vw;
+	height: 40vh;
 	position: absolute;
 	top: 15%;
-	display: flex;
-	justify-content: center;
 }
-.main>.cd>img{
+.cd>img{
 	position: absolute;
+	left: 50%;
 }
-.main>.cd>img.roll{
+.cd>img.roll{
 	animation: roll 6s infinite linear;
 }
-.main>.cd>img.cd-circle{
+.cd>img.cd-circle{
 	width: 21rem;
+	margin-left: -10.5rem;
 }
-.main>.cd>img.cd-main{
+.cd>img.cd-main{
 	width: 14rem;
 	border-radius: 50%;
 	top: 3.5rem;
+	margin-left: -7rem;
 }
 @keyframes roll {
 	0%{transform: rotateZ(0deg);}
 	100%{transform: rotateZ(360deg);}
 }
 .control{
-	width: 100%;
+	width: 100vw;
 	position: absolute;
-	bottom: 0;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
+}
+.control>span{
+	display: inline-block;
+	width: 20vw;
+	text-align: center;
+	box-sizing: border-box;
 }
 .control>.control-main>.iconfont{
 	font-size: 4rem;

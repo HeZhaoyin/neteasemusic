@@ -114,7 +114,7 @@ export default {
 }
 .header{
 	width: 100%;
-	height: 5vh;
+	height: 6vh;
 	text-align: center;
 	position: fixed;
 	top: 0;
