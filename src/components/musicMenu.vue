@@ -18,7 +18,7 @@
 				</div>
 				<div class="list" id="mylist">
 					<ul>
-						<li v-for="(item,index) in list">
+						<li v-for="(item,index) in list" @click="addToPlayList(item)">
 							<span class="index">{{index+1}}</span>
 							<div class="music-info">
 								<p class="music-name">{{item.name}}</p>
@@ -59,12 +59,14 @@ export default {
 			this.$store.commit('changeShowList');
 		},
 		getList:function(){
-			this.$http.get(api.getMusicDetailList(this.musicList.id)).then((res)=>{
-				this.list = res.data.playlist.tracks;
-				this.$nextTick(()=>{
-					this.initScroll();
+			if (this.musicList.id) {
+				this.$http.get(api.getMusicDetailList(this.musicList.id)).then((res)=>{
+					this.list = res.data.playlist.tracks;
+					this.$nextTick(()=>{
+						this.initScroll();
+					})
 				})
-			})
+			}
 		},
 		initScroll:function(){
 			if (!this.menuScroll) {
@@ -80,6 +82,9 @@ export default {
 			}else{
 				this.menuScroll.refresh();
 			}
+		},
+		addToPlayList:function(item){
+			this.$store.commit('addToPlayList',item)
 		}
 	}
 }

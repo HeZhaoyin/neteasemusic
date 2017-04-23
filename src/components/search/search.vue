@@ -80,13 +80,5 @@ export default {
 .search-nav>ul>li>a.router-link-active>span{
 	opacity: 1;
 }
-.fadein-enter-active,
-.fadein-leave-active {
 
-}
-
-.fadein-enter,
-.fadein-leave-active {
-
-}
 </style>
