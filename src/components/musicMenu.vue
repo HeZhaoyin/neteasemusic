@@ -4,6 +4,7 @@
 			<div class="header" :style="{'background':'rgba(192,192,192,' + opacity + ')'}">
 				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
 				<span class="header-title">歌单</span>
+				<span @click="changeShowPlayer"><i class="iconfont">&#xe649;</i></span>
 			</div>
 
 			<div ref="menuWrapper" class="warpper">
@@ -56,6 +57,9 @@ export default {
 	  'musicList'
   	]),
 	methods:{
+		changeShowPlayer:function(){
+			this.$store.commit('changeShowPlayer');
+		},
 		hide:function(){
 			this.$store.commit('changeShowList');
 		},
@@ -78,16 +82,21 @@ export default {
 				  startY: 0
 		        });
 				this.menuScroll.on('scroll', (pos) => {
-					this.opacity = -pos.y / 200;
+					this.opacity = -pos.y / 300;
 				})
 			}else{
 				this.menuScroll.refresh();
 			}
 		},
 		addToPlayList:function(item){
+			var player = document.getElementById('player');
 			this.$store.commit('addToPlayList',item);
 			this.$store.commit('changeShowPlayer');
 			this.$store.dispatch('getSong',item.id);
+			player.play();
+			// setTimeout(()=>{
+			// 	player.pause();
+			// },100);
 		}
 	}
 }
@@ -116,7 +125,7 @@ export default {
 	filter: blur(20px);
 }
 .header{
-	width: 100%;
+	width: 100vw;
 	height: 6vh;
 	text-align: center;
 	position: fixed;
@@ -124,13 +133,11 @@ export default {
 	left: 0;
 	z-index: 1;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-}
-.header>.back{
 	color: #fff;
-	position: absolute;
-	left: 1rem;
+	padding: 0 0.3rem;
+	box-sizing: border-box;
 }
 .header>.back>.iconfont{
 	font-size: 1.4rem;

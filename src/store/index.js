@@ -79,7 +79,9 @@ const store = new Vuex.Store({
 },
 actions:{
 	getSong({commit,state},id){
+		console.log('开始获取数据');
 		Axios.get(api.getSong(id)).then((res)=>{
+			console.log('获取数据成功');
 			commit('setAudio');
 			state.audio.musicSrc = res.data.data[0].url;
 		})

@@ -15,7 +15,7 @@ export default {
 	},
 	methods:{
 		changeShowPlayer:function(){
-			this.$store.commit('changeShowPlayer')
+			this.$store.commit('changeShowPlayer');
 		}
 	}
 }

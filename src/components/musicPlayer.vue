@@ -15,7 +15,7 @@
 		<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
 		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc + '?param=300y300'" alt="">
 	</div>
-	<audio @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
+	<audio id="player" @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
 	<div class="control">
 		<span><i class="iconfont">&#xe6bf;</i></span>
 		<span @click="prev"><i class="iconfont">&#xe6c9;</i></span>
@@ -34,6 +34,22 @@ export default {
 		return {
 			musicSrc:''
 		}
+	},
+	mounted:function(){
+		this.$nextTick(()=>{
+			// this.$refs.player.addEventListener('canplay',()=>{
+			// 	this.canPlay();
+			// });
+			// // this.$refs.player.addEventListener('canplaythrough',()=>{
+			// // 	this.canPlay();
+			// // })
+			// this.$refs.player.on('canplay',()=>{
+			// 	this.canPlay();
+			// });
+			// // this.$refs.player.on('canplaythrough',()=>{
+			// // 	this.canPlay();
+			// // })
+		})
 	},
 	methods:{
 		changeShowPlayer:function(){
