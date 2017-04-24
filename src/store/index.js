@@ -84,6 +84,8 @@ actions:{
 			console.log('获取数据成功');
 			commit('setAudio');
 			state.audio.musicSrc = res.data.data[0].url;
+			var player = document.getElementById('player');
+			player.play();
 		})
 	}
 }

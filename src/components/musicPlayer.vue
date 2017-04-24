@@ -24,6 +24,8 @@
 		<span @click="next"><i class="iconfont">&#xe6c8;</i></span>
 		<span><i class="iconfont">&#xe659;</i></span>
 	</div>
+	<div class="mask-bg"></div>
+	<div class="mask-img" :style="{backgroundImage:'url(' + audio.coverSrc + '?param=300y300)'}"></div>
 </div>
 </template>
 
@@ -89,8 +91,6 @@ export default {
 	position: fixed;
 	top: 0;
 	left: 0;
-	/*background: url('https://p4.music.126.net/xuW0eAX30At9yn8vp0Z3AA==/83562883723684.jpg?param=500y500');*/
-	background-color: skyblue;
 	z-index: 999;
 	color: #fff;
 }
@@ -187,5 +187,26 @@ export default {
 .control>.control-play>{
 	position: relative;
 	top: -0.5rem;
+}
+.mask-bg{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	background-color: rgba(128,128,128,0.5);
+}
+.mask-img{
+	width: 120vw;
+	height: 120vh;
+	position: absolute;
+	background-size: cover;
+	background-repeat: no-repeat;
+	top: -10%;
+	left: -10%;
+	z-index: -2;
+	-webkit-filter: blur(20px);
+	filter: blur(20px);
 }
 </style>

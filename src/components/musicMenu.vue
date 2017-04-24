@@ -89,11 +89,9 @@ export default {
 			}
 		},
 		addToPlayList:function(item){
-			var player = document.getElementById('player');
 			this.$store.commit('addToPlayList',item);
 			this.$store.commit('changeShowPlayer');
 			this.$store.dispatch('getSong',item.id);
-			player.play();
 			// setTimeout(()=>{
 			// 	player.pause();
 			// },100);
