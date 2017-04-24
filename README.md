@@ -1,5 +1,3 @@
-使用了SSH上传
-
 [预览](https://bunnywithyou.github.io/neteasemusic/dist/)
 
 手机查看效果更佳
