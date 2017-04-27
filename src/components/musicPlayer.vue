@@ -206,7 +206,8 @@ export default {
 	top: -10%;
 	left: -10%;
 	z-index: -2;
-	-webkit-filter: blur(20px);
-	filter: blur(20px);
+	-webkit-filter: blur(15px);
+	filter: blur(15px);
+	background-color: #fff;
 }
 </style>
