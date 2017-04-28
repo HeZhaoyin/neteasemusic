@@ -90,6 +90,7 @@ export default {
       this.isTrans = true;
       this.play(-this.index * 100);
       this.timer = setInterval(this.autoPlay, 2000);
+	  this.distance = 0;
     }
   }
 }
