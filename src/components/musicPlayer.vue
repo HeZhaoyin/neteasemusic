@@ -215,13 +215,14 @@ export default {
 	width: 120vw;
 	height: 120vh;
 	position: absolute;
-	background-size: cover;
+	background-size: 200%;
+	background-position: center;
 	background-repeat: no-repeat;
-	top: -10%;
-	left: -10%;
+	top: -10vh;
+	left: -10vw;
 	z-index: -2;
-	-webkit-filter: blur(15px);
-	filter: blur(15px);
+	-webkit-filter: blur(8px);
+	filter: blur(8px);
 	background-color: #fff;
 }
 .play-list-mask{

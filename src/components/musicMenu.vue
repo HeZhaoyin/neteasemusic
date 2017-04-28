@@ -3,7 +3,7 @@
 		<div class="music-menu" id="mymenu">
 			<div class="header" :style="{'background':'rgba(192,192,192,' + opacity + ')'}">
 				<span class="back" @click="hide"><i class="iconfont">&#xe647;</i></span>
-				<span class="header-title">歌单</span>
+				<span class="header-title">{{headerTitle}}</span>
 				<span @click="changeShowPlayer"><i class="iconfont">&#xe649;</i></span>
 			</div>
 
@@ -45,7 +45,8 @@ export default {
 	data(){
 		return{
 			list:[],
-			opacity:0
+			opacity:0,
+			headerTitle:'歌单'
 		}
 	},
 	mounted:function(){
@@ -83,6 +84,11 @@ export default {
 		        });
 				this.menuScroll.on('scroll', (pos) => {
 					this.opacity = -pos.y / 300;
+					if (-pos.y > 200) {
+						this.headerTitle = this.musicList.name;
+					}else{
+						this.headerTitle = '歌单';
+					}
 				})
 			}else{
 				this.menuScroll.refresh();
@@ -141,9 +147,12 @@ export default {
 	font-size: 1.4rem;
 }
 .header>.header-title{
-	line-height: 5vh;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	color: #fff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0 2rem;
 }
 .main{
 	width: 100vw;
