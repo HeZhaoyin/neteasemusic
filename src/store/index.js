@@ -36,6 +36,9 @@ const store = new Vuex.Store({
     setMusicList(state, list) {
       state.musicList = list;
     },
+	setPlayCurrentIndex(state,index){
+		state.playCurrentIndex = index;
+	},
     play(state) {
       state.isPlaying = true;
     },

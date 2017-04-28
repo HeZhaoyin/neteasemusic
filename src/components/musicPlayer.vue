@@ -107,6 +107,7 @@ export default {
 	left: 0;
 	z-index: 999;
 	color: #fff;
+	overflow: hidden;
 }
 .player-header{
 	height: 6vh;
@@ -121,13 +122,20 @@ export default {
 	font-size: 1.6rem;
 }
 .player-header>.title{
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .player-header>.title>p{
+	box-sizing: border-box;
 	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 2rem;
 }
 .player-header>.title>.music-name{
 	font-size: 1rem;
@@ -212,14 +220,14 @@ export default {
 	background-color: rgba(128,128,128,0.5);
 }
 .mask-img{
-	width: 120vw;
-	height: 120vh;
+	width: 140vw;
+	height: 140vh;
 	position: absolute;
-	background-size: 200%;
+	background-size: 150%;
 	background-position: center;
 	background-repeat: no-repeat;
-	top: -10vh;
-	left: -10vw;
+	top: -20vh;
+	left: -20vw;
 	z-index: -2;
 	-webkit-filter: blur(8px);
 	filter: blur(8px);

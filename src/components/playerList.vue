@@ -3,7 +3,7 @@
 		<div ref="menuWrapper" class="warpper">
 			<div>
 				<ul>
-					<li v-for="(item,index) in playList" :class="{current:index==playCurrentIndex}">
+					<li v-for="(item,index) in playList" :class="{current:index==playCurrentIndex}" @click="changePlayCurrent(index)">
 						<span>{{item.name}}</span>
 						<span class="author">-</span>
 						<span class="author">{{item.author}}</span>
@@ -44,6 +44,10 @@ export default {
 		},
 		changeShowPlayerList:function(){
 			this.$store.commit('changeShowPlayerList');
+		},
+		changePlayCurrent:function(index){
+			this.$store.commit('setPlayCurrentIndex',index);
+			this.$store.commit('setAudio');
 		}
 	}
 }
@@ -75,21 +79,26 @@ export default {
 	height: 65vh;
 	overflow: hidden;
 }
+.warpper>div>ul{
+	border-top: 1px solid #ccc;
+	padding-left: 1rem;
+}
 .warpper>div>ul>li{
 	font-size: 1rem;
 	line-height: 2.5rem;
-	padding-left: 1rem;
 	border-bottom: 1px solid #ccc;
+	white-space: nowrap;
 }
 .close{
 	width: 100vw;
-	height: 5vh;
+	height: 7vh;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
+	border-top: 1px solid #ccc;
 }
 </style>
