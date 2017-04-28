@@ -22,15 +22,22 @@
 		<span @click="pause" class="control-main" v-if="isPlaying"><i class="iconfont">&#xe682;</i></span>
 		<span @click="play" class="control-main control-play" v-else><i class="iconfont">&#xe628;</i></span>
 		<span @click="next"><i class="iconfont">&#xe6c8;</i></span>
-		<span><i class="iconfont">&#xe659;</i></span>
+		<span @click="changeShowPlayerList"><i class="iconfont">&#xe659;</i></span>
 	</div>
 	<div class="mask-bg"></div>
 	<div class="mask-img" :style="{backgroundImage:'url(' + audio.coverSrc + '?param=300y300)'}"></div>
+	<transition name="fade">
+		<div class="play-list-mask" v-if="showPlayerList" @click="changeShowPlayerList"></div>
+	</transition>
+	<transition name="slide">
+		<playerList v-if="showPlayerList"></playerList>
+	</transition>
 </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import playerList from './playerList.vue'
 export default {
 	data(){
 		return {
@@ -74,12 +81,19 @@ export default {
 		},
 		next:function(){
 			this.$store.commit('next');
+		},
+		changeShowPlayerList:function(){
+			this.$store.commit('changeShowPlayerList');
 		}
+	},
+	components:{
+		playerList
 	},
 	computed: mapState([
 		'audio',
 		'isPlaying',
-		'playList'
+		'playList',
+		'showPlayerList'
 	]),
 }
 </script>
@@ -209,5 +223,26 @@ export default {
 	-webkit-filter: blur(15px);
 	filter: blur(15px);
 	background-color: #fff;
+}
+.play-list-mask{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background-color: rgba(0,0,0,0.7);
+}
+.fade-enter-active,.fade-leave-active{
+	transition: opacity .2s linear;
+}
+.fade-enter,.fade-leave-active{
+	opacity: 0
+}
+.slide-enter-active,.slide-leave-active{
+	transition: all .2s linear;
+}
+.slide-enter,.slide-leave-active{
+	transform: translateY(70vh);
 }
 </style>

@@ -1,4 +1,4 @@
-技术栈：Vue全家桶 (Vue+Vuex+Vue-router+Axios)  
+技术栈：Vue全家桶 (Vue+Vuex+Vue-router+Axios)  OK
 
 [预览](https://bunnywithyou.github.io/neteasemusic/dist/)  
 
