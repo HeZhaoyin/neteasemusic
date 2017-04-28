@@ -68,18 +68,23 @@ export default {
       }
     },
     start: function(e) {
+	  clearInterval(this.timer);
       this.startX = e.touches[0].clientX;
     },
     move: function(e) {
-      clearInterval(this.timer);
       this.isTrans = false;
       this.distance = e.touches[0].clientX - this.startX;
       this.play(-this.index * 100 + this.distance / 375 * 100);
     },
     end: function() {
-      if (this.distance > 0) {
+      if (document.body.clientWidth) {
+        var screenW = document.body.clientWidth;
+      } else if (document.documentElement.clientWidth) {
+        var screenW = document.documentElement.clientWidth;
+      }
+      if (this.distance > (screenW * 0.3)) {
         this.index--;
-      } else {
+	} else if (this.distance < (-screenW * 0.3)) {
         this.index++;
       }
       this.isTrans = true;
