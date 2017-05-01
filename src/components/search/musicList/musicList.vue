@@ -87,11 +87,14 @@ ul{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 ul>li{
 	width: 49vw;
 	margin-bottom: 1rem;
+}
+ul>li>p{
+	padding-left: 0.4rem;
 }
 ul>li>.cover{
 	width: 49vw;
