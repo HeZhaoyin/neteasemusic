@@ -4,7 +4,7 @@
 		<ul>
 			<li v-for="item in list" @click="goMenu(item)">
 				<div class="cover">
-					<img :src="item.coverImgUrl + '?param=300y300'" alt="">
+					<img :src="item.coverImgUrl + '?param=200y200'" alt="">
 					<span class="listen-count"><i class="iconfont">&#xe6b0;</i>{{item.playCount}}</span>
 					<span class="author"><i class="iconfont">&#xe673;</i>{{item.creator.nickname}}</span>
 				</div>

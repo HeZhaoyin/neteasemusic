@@ -82,9 +82,9 @@ export default {
       } else if (document.documentElement.clientWidth) {
         var screenW = document.documentElement.clientWidth;
       }
-      if (this.distance > (screenW * 0.3)) {
+      if (this.distance > (screenW * 0.1)) {
         this.index--;
-	} else if (this.distance < (-screenW * 0.3)) {
+	} else if (this.distance < (-screenW * 0.1)) {
         this.index++;
       }
       this.isTrans = true;
