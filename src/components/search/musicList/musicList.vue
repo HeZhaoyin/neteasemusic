@@ -2,7 +2,7 @@
   <div ref="menuWrapper" class="warpper">
   	<div>
 		<ul>
-			<li v-for="item in list">
+			<li v-for="item in list" @click="goMenu(item)">
 				<div class="cover">
 					<img :src="item.coverImgUrl + '?param=300y300'" alt="">
 					<span class="listen-count"><i class="iconfont">&#xe6b0;</i>{{item.playCount}}</span>
@@ -67,6 +67,10 @@ export default {
 					this.initScroll();
 				})
 			})
+		},
+		goMenu:function(item){
+			this.$store.commit('changeShowList');
+			this.$store.commit('setMusicList',item);
 		}
 	},
 }
