@@ -112,7 +112,7 @@ export default {
 .player-header{
 	height: 6vh;
 	background-color: rgba(0,0,0,0);
-	border-bottom: 1px solid rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgba(245,245,245,0.2);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
