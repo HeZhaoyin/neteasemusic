@@ -103,7 +103,7 @@ export default {
 }
 
 .banner>ul {
-  width: 600%;
+  width: 600vw;
   overflow: hidden;
   transform: translate(-100vw);
 }

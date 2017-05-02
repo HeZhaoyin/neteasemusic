@@ -64,9 +64,8 @@ export default {
 
 <style>
 #app {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  max-width: 640px;
   min-width: 300px;
   margin: 0 auto;
   position: relative;
@@ -77,6 +76,7 @@ export default {
   bottom: 0;
   width: 100%;
   background: rgba(49, 49, 49, 0.97);
+  z-index: 999;
 }
 
 .nav-main>ul {

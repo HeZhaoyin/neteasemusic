@@ -9,5 +9,8 @@ export default{
 	},
 	getSong(id){
 		return apiUrl + '?type=url&id=' + id;
+	},
+	getSearchList(cat){
+		return apiUrl2 + '?type=search&s=' + cat;
 	}
 }
