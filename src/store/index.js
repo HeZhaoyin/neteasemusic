@@ -18,10 +18,13 @@ const store = new Vuex.Store({
       name: '歌曲名称',
       author: '歌手',
       coverSrc: '../../static/img/a91.png'
-    }
+    },
+    duration: 0,
+    currTime: 0
   },
   getters: {
-    showMusicList: state => state.showMusicList
+    showMusicList: state => state.showMusicList,
+    audio: state => state.audio
   },
   mutations: {
     changeShowList(state) {
@@ -36,9 +39,9 @@ const store = new Vuex.Store({
     setMusicList(state, list) {
       state.musicList = list;
     },
-	setPlayCurrentIndex(state,index){
-		state.playCurrentIndex = index;
-	},
+    setPlayCurrentIndex(state, index) {
+      state.playCurrentIndex = index;
+    },
     play(state) {
       state.isPlaying = true;
     },
@@ -72,8 +75,6 @@ const store = new Vuex.Store({
       if (state.playCurrentIndex < 0) {
         state.playCurrentIndex = state.playList.length - 1;
       }
-      console.log(state.playCurrentIndex);
-      console.log(state.playList);
       state.audio = state.playList[state.playCurrentIndex];
     },
     next(state) {
@@ -82,6 +83,12 @@ const store = new Vuex.Store({
         state.playCurrentIndex = 0;
       }
       state.audio = state.playList[state.playCurrentIndex];
+    },
+    setDuration(state, time) {
+      state.duration = time;
+    },
+    setCurrTime(state, time) {
+      state.currTime = time;
     }
   },
   actions: {
@@ -95,7 +102,7 @@ const store = new Vuex.Store({
         commit('setAudio');
         state.audio.musicSrc = res.data.data[0].url;
         var player = document.getElementById('player');
-        player.play();
+        player.load();
       })
     }
   }

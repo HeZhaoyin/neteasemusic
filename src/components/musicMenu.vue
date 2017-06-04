@@ -18,7 +18,11 @@
 					<p class="creator"><img class="creator-avatar" :src="musicList.creator.avatarUrl + '?param=70y70'" alt="">{{musicList.creator.nickname}}</p>
 				</div>
 				<div class="list" id="mylist">
-					<ul>
+					<div class="loading" v-if="isLoading">
+						<img src="../../static/img/loading.png" alt="">
+						<p>加载中...</p>
+					</div>
+					<ul v-else>
 						<li v-for="(item,index) in list" @click="addToPlayList(item)">
 							<span class="index">{{index+1}}</span>
 							<div class="music-info">
@@ -28,6 +32,7 @@
 						</li>
 					</ul>
 				</div>
+				<div class="bottom"></div>
 				</div>
 			</div>
 
@@ -46,11 +51,13 @@ export default {
 		return{
 			list:[],
 			opacity:0,
-			headerTitle:'歌单'
+			headerTitle:'歌单',
+			isLoading:true
 		}
 	},
 	mounted:function(){
 		this.$nextTick(()=>{
+			this.isLoading = true;
 			this.getList();
 		})
 	},
@@ -68,6 +75,7 @@ export default {
 			if (this.musicList.id) {
 				this.$http.get(api.getMusicDetailList(this.musicList.id)).then((res)=>{
 					this.list = res.data.playlist.tracks;
+					this.isLoading = false;
 					this.$nextTick(()=>{
 						this.initScroll();
 					})
@@ -222,5 +230,20 @@ export default {
 }
 .warpper{
 	height: 100vh;
+}
+.loading{
+	height: 50vh;
+	text-align: center;
+	padding-top: 2rem;
+	font-size: 1rem;
+}
+.loading>img{
+	animation: roll 1s infinite linear;
+}
+
+.bottom{
+	width: 100vw;
+	height: 10vh;
+	background-color: #fff;
 }
 </style>

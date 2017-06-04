@@ -76,7 +76,7 @@ export default {
   bottom: 0;
   width: 100%;
   background: rgba(49, 49, 49, 0.97);
-  z-index: 999;
+  z-index: 998;
 }
 
 .nav-main>ul {

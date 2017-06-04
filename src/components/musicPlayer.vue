@@ -15,7 +15,15 @@
 		<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
 		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc + '?param=300y300'" alt="">
 	</div>
-	<audio id="player" @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
+	<audio @timeupdate="timeUpdate" id="player" @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
+	<div class="time-line">
+		<span class="now-time">{{currTime | parseTime}}</span>
+			<div class="line">
+				<span class="line-ball"></span>
+			</div>
+		<!-- <span class="end-time">{{audio.duration | parseTime}}</span> -->
+		<span class="end-time">{{duration | parseTime}}</span>
+	</div>
 	<div class="control">
 		<span><i class="iconfont">&#xe6bf;</i></span>
 		<span @click="prev"><i class="iconfont">&#xe6c9;</i></span>
@@ -46,18 +54,7 @@ export default {
 	},
 	mounted:function(){
 		this.$nextTick(()=>{
-			// this.$refs.player.addEventListener('canplay',()=>{
-			// 	this.canPlay();
-			// });
-			// // this.$refs.player.addEventListener('canplaythrough',()=>{
-			// // 	this.canPlay();
-			// // })
-			// this.$refs.player.on('canplay',()=>{
-			// 	this.canPlay();
-			// });
-			// // this.$refs.player.on('canplaythrough',()=>{
-			// // 	this.canPlay();
-			// // })
+
 		})
 	},
 	methods:{
@@ -84,6 +81,11 @@ export default {
 		},
 		changeShowPlayerList:function(){
 			this.$store.commit('changeShowPlayerList');
+		},
+		timeUpdate:function(){
+			let player = document.getElementById('player');
+			this.$store.commit('setDuration',player.duration);
+			this.$store.commit('setCurrTime',player.currentTime)
 		}
 	},
 	components:{
@@ -93,8 +95,22 @@ export default {
 		'audio',
 		'isPlaying',
 		'playList',
-		'showPlayerList'
+		'showPlayerList',
+		'duration',
+		'currTime'
 	]),
+	filters:{
+		parseTime:function(time){
+			if (time) {
+				var min = ('00' + Math.floor(time / 60)).substr(-2);
+				var sec = ('00' + Math.floor(time % 60)).substr(-2);
+			}else{
+				var min = '00';
+				var sec = '00';
+			}
+			return min + ':' + sec;
+		}
+	}
 }
 </script>
 
@@ -145,7 +161,7 @@ export default {
 }
 .main{
 	width: 100vw;
-	height: 80vh;
+	height: 75vh;
 	overflow: hidden;
 	position: relative;
 }
@@ -190,6 +206,49 @@ export default {
 	0%{transform: rotateZ(0deg);}
 	100%{transform: rotateZ(360deg);}
 }
+
+/*时间线*/
+.time-line{
+	height: 5vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.time-line .line{
+	width: 70vw;
+	height: 1px;
+	background-color: gray;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.time-line .line .line-ball{
+	position: absolute;
+	left: 0%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 20px;
+	width: 20px;
+	background-color: #fff;
+	border-radius: 50%;
+}
+.time-line .line .line-ball::after{
+	content: '';
+	display: inline-block;
+	height: 5px;
+	width: 5px;
+	background-color: red;
+	border-radius: 50%;
+}
+.time-line .now-time{
+
+}
+.time-line .end-time{
+
+}
+
+
 .control{
 	width: 100vw;
 	position: absolute;

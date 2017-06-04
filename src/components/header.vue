@@ -3,17 +3,17 @@
 		<div class="header">
 			<span v-if="!isSearching"><i class="iconfont">&#xe64f;</i></span>
 			<form id="myform" action="" onsubmit="return false;">
-				<input id="mySearch" @search="getSearchList" v-model="searchContent" ref="myInput" @focus="test(true)" type="search" name="" placeholder="搜索音乐、歌词、电台">
+				<input id="mySearch" @search="getSearchList" v-model="searchContent" ref="myInput" @focus="showSearch(true)" type="search" name="" placeholder="搜索音乐、歌词、电台">
 			</form>
 			<span v-if="!isSearching" @click="changeShowPlayer"><i class="iconfont">&#xe649;</i></span>
-			<span @click="test(false)" class="cancel" v-else>取消</span>
+			<span @click="showSearch(false)" class="cancel" v-else>取消</span>
 		</div>
 		<div class="search-main" v-if="isSearching" ref="menuWrapper">
 			<ul class="unfn-search" v-if="!fnSearching">
-				<li>搜索“{{searchContent}}”</li>
+				<li @click="getSearchList">搜索“{{searchContent}}”</li>
 			</ul>
 			<ul v-if="fnSearching">
-				<li v-for="song in searchList">
+				<li v-for="song in searchList" @click="addToPlayList(song)">
 					<p>{{song.name}}</p>
 					<p class="author">{{song.ar[0].name}} - {{song.al.name}}</p>
 				</li>
@@ -35,10 +35,16 @@ export default {
 		}
 	},
 	methods:{
+		resetSearch:function(){
+			this.searchContent = '';
+			this.isSearching = false;
+			this.searchList = [];
+			this.fnSearching = false;
+		},
 		changeShowPlayer:function(){
 			this.$store.commit('changeShowPlayer');
 		},
-		test:function(flag){
+		showSearch:function(flag){
 			if (flag) {
 				this.isSearching = true;
 				this.$refs.myInput.style.width = '80vw';
@@ -56,6 +62,7 @@ export default {
 				this.$http.get(api.getSearchList(this.searchContent)).then((res)=>{
 					console.log(res.data.result.songs);
 					this.searchList = res.data.result.songs;
+					this.fnSearching = true;
 					this.$nextTick(()=>{
 						this.initScroll();
 					})
@@ -75,6 +82,12 @@ export default {
 			}else{
 				this.menuScroll.refresh();
 			}
+		},
+		addToPlayList:function(item){
+			this.resetSearch();
+			this.$store.commit('addToPlayList',item);
+			this.$store.commit('changeShowPlayer');
+			this.$store.dispatch('getSong',item.id);
 		}
 	},
 }
@@ -132,6 +145,6 @@ export default {
 }
 .search-main>.unfn-search>li:first-child{
 	line-height: 3rem;
-	color: #4169E1;
+	color: #1874CD;
 }
 </style>
