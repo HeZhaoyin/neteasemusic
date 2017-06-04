@@ -1,6 +1,6 @@
 技术栈：Vue全家桶 (Vue+Vuex+Vue-router+Axios)  OK
 
-[预览](https://bunnywithyou.github.io/neteasemusic/dist/)  
+[预览](http://www.echobunny.com/dist/)  
 
 手机查看效果更佳  
 

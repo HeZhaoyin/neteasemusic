@@ -19,9 +19,8 @@
 	<div class="time-line">
 		<span class="now-time">{{currTime | parseTime}}</span>
 			<div class="line">
-				<span class="line-ball"></span>
+				<span class="line-ball" :style="{left:currLeft + '%'}"></span>
 			</div>
-		<!-- <span class="end-time">{{audio.duration | parseTime}}</span> -->
 		<span class="end-time">{{duration | parseTime}}</span>
 	</div>
 	<div class="control">
@@ -49,7 +48,8 @@ import playerList from './playerList.vue'
 export default {
 	data(){
 		return {
-			musicSrc:''
+			musicSrc:'',
+			currLeft:0
 		}
 	},
 	mounted:function(){
@@ -85,7 +85,8 @@ export default {
 		timeUpdate:function(){
 			let player = document.getElementById('player');
 			this.$store.commit('setDuration',player.duration);
-			this.$store.commit('setCurrTime',player.currentTime)
+			this.$store.commit('setCurrTime',player.currentTime);
+			this.currLeft = player.currentTime / player.duration * 100;
 		}
 	},
 	components:{
@@ -101,12 +102,11 @@ export default {
 	]),
 	filters:{
 		parseTime:function(time){
+			let min = '00';
+			let sec = '00';
 			if (time) {
-				var min = ('00' + Math.floor(time / 60)).substr(-2);
-				var sec = ('00' + Math.floor(time % 60)).substr(-2);
-			}else{
-				var min = '00';
-				var sec = '00';
+				min = ('00' + Math.floor(time / 60)).substr(-2);
+				sec = ('00' + Math.floor(time % 60)).substr(-2);
 			}
 			return min + ':' + sec;
 		}
@@ -219,35 +219,18 @@ export default {
 	height: 1px;
 	background-color: gray;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	position: relative;
 }
 .time-line .line .line-ball{
 	position: absolute;
-	left: 0%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 20px;
-	width: 20px;
-	background-color: #fff;
+	height: 1.1rem;
+	width: 1.1rem;
 	border-radius: 50%;
+	background-image: -webkit-radial-gradient(3px,#f00,#fff);
+	background-image: radial-gradient(3px,#f00,#fff);
 }
-.time-line .line .line-ball::after{
-	content: '';
-	display: inline-block;
-	height: 5px;
-	width: 5px;
-	background-color: red;
-	border-radius: 50%;
-}
-.time-line .now-time{
-
-}
-.time-line .end-time{
-
-}
-
 
 .control{
 	width: 100vw;
