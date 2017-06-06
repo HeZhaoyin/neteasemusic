@@ -19,6 +19,7 @@
 	<div class="time-line">
 		<span class="now-time">{{currTime | parseTime}}</span>
 			<div class="line">
+				<span class="curr-line" :style="{width:currLeft + '%'}"></span>
 				<span class="line-ball" :style="{left:currLeft + '%'}"></span>
 			</div>
 		<span class="end-time">{{duration | parseTime}}</span>
@@ -218,18 +219,22 @@ export default {
 	width: 70vw;
 	height: 1px;
 	background-color: gray;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	position: relative;
+}
+.time-line .line .curr-line{
+	position: absolute;
+	height: 3px;
+	background-color: red;
 }
 .time-line .line .line-ball{
 	position: absolute;
-	height: 1.1rem;
-	width: 1.1rem;
+	top: 50%;
+	margin-top: -10px;
+	height: 20px;
+	width: 20px;
 	border-radius: 50%;
-	background-image: -webkit-radial-gradient(3px,#f00,#fff);
-	background-image: radial-gradient(3px,#f00,#fff);
+	background-image: -webkit-radial-gradient(4px,#f00,#fff);
+	background-image: radial-gradient(4px,#f00,#fff);
 }
 
 .control{
