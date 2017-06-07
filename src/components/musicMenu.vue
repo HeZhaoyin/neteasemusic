@@ -106,9 +106,6 @@ export default {
 			this.$store.commit('addToPlayList',item);
 			this.$store.commit('changeShowPlayer');
 			this.$store.dispatch('getSong',item.id);
-			// setTimeout(()=>{
-			// 	player.pause();
-			// },100);
 		}
 	}
 }

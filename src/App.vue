@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <transition name="movein">
-    <musicPlayer v-show="showPlayer"></musicPlayer>
+    <musicPlayer v-show="showPlayer" ref="musicPlayer"></musicPlayer>
   </transition>
   <transition name="movein">
     <musicMenu v-if="showMusicList"></musicMenu>

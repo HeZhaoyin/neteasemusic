@@ -15,7 +15,7 @@
 		<img :class="{roll:isPlaying}" class="cd-circle" src="../../static/img/a9o.png" alt="">
 		<img :class="{roll:isPlaying}" class="cd-main" :src="audio.coverSrc + '?param=300y300'" alt="">
 	</div>
-	<audio @timeupdate="timeUpdate" id="player" @canplay="canPlay" control="true" ref="player" :src="audio.musicSrc"></audio>
+	<audio @canplay="play" @timeupdate="timeUpdate" @ended="next" id="player" control="true" ref="player" :src="audio.musicSrc"></audio>
 	<div class="time-line">
 		<span class="now-time">{{currTime | parseTime}}</span>
 			<div class="line">
@@ -49,13 +49,11 @@ import playerList from './playerList.vue'
 export default {
 	data(){
 		return {
-			musicSrc:'',
-			currLeft:0
+			currLeft:0,
 		}
 	},
 	mounted:function(){
 		this.$nextTick(()=>{
-
 		})
 	},
 	methods:{
@@ -69,10 +67,6 @@ export default {
 		pause:function(){
 			this.$store.commit('pause');
 			this.$refs.player.pause();
-		},
-		canPlay:function(){
-			this.$store.commit('play');
-			this.$refs.player.play();
 		},
 		prev:function(){
 			this.$store.commit('prev');
@@ -88,7 +82,7 @@ export default {
 			this.$store.commit('setDuration',player.duration);
 			this.$store.commit('setCurrTime',player.currentTime);
 			this.currLeft = player.currentTime / player.duration * 100;
-		}
+		},
 	},
 	components:{
 		playerList
@@ -111,7 +105,7 @@ export default {
 			}
 			return min + ':' + sec;
 		}
-	}
+	},
 }
 </script>
 

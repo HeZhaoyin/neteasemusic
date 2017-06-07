@@ -17,7 +17,8 @@ const store = new Vuex.Store({
       id: '',
       name: '歌曲名称',
       author: '歌手',
-      coverSrc: '../../static/img/a91.png'
+      coverSrc: '../../static/img/a91.png',
+      musicSrc: ''
     },
     duration: 0,
     currTime: 0
