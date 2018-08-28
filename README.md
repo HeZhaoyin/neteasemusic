@@ -1,3 +1,8 @@
+因API接口出问题.... 项目暂时无法演示...
+
+
+
+
 技术栈：Vue全家桶 (Vue+Vuex+Vue-router+Axios)  OK
 
 [预览](http://www.echobunny.com/dist/)  
